@@ -45,9 +45,9 @@
               
                 
                 <li><a
-                  href='#_xalertclose'
+                  href='#_close'
                   class="">
-                  _xAlertClose
+                  _close
                   
                 </a>
                 
@@ -55,9 +55,9 @@
               
                 
                 <li><a
-                  href='#_xalertopen'
+                  href='#_open'
                   class="">
-                  _xAlertOpen
+                  _open
                   
                 </a>
                 
@@ -95,9 +95,9 @@
               
                 
                 <li><a
-                  href='#xalertopen'
+                  href='#open'
                   class="">
-                  xAlertOpen
+                  open
                   
                 </a>
                 
@@ -105,9 +105,9 @@
               
                 
                 <li><a
-                  href='#xalertclose'
+                  href='#close'
                   class="">
-                  xAlertClose
+                  close
                   
                 </a>
                 
@@ -203,8 +203,7 @@ xAlert sostituisce la funzione alert() di javascript</p>
   </div>
   
 
-  <p>function genOverlay</p>
-
+  
 
   <div class='pre p1 fill-light mt0'>genOverlay(setter: any, setter.overlay.overZIndex: any, setter.overlay.overColor: any, setter.overlay.overOpacity: any): any</div>
   
@@ -289,19 +288,18 @@ xAlert sostituisce la funzione alert() di javascript</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='_xalertclose'>
-      _xAlertClose
+    <h3 class='fl m0' id='_close'>
+      _close
     </h3>
     
     
   </div>
   
 
-  <p>function _AlertClose</p>
-<p>chiude xAlert accedendo direttamente al DOM (no via istanza)</p>
+  <p>chiude xAlert accedendo direttamente al DOM (no via istanza)</p>
 
 
-  <div class='pre p1 fill-light mt0'>_xAlertClose()</div>
+  <div class='pre p1 fill-light mt0'>_close()</div>
   
   
 
@@ -336,19 +334,18 @@ xAlert sostituisce la funzione alert() di javascript</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='_xalertopen'>
-      _xAlertOpen
+    <h3 class='fl m0' id='_open'>
+      _open
     </h3>
     
     
   </div>
   
 
-  <p>function xAlertOpen</p>
-<p>apre xAlert accedendo direttamente al DOM</p>
+  <p>apre xAlert accedendo direttamente al DOM</p>
 
 
-  <div class='pre p1 fill-light mt0'>_xAlertOpen(message: any): any</div>
+  <div class='pre p1 fill-light mt0'>_open(message: any): any</div>
   
   
 
@@ -414,8 +411,7 @@ se è un oggetto deve contenere le proprietà message e title
   </div>
   
 
-  <p>function genButton</p>
-
+  
 
   <div class='pre p1 fill-light mt0'>genButton(setter: any, setter.button.text: any, setter.button.backColor: any, setter.button.cssStyle: any, setter.button.class: any)</div>
   
@@ -509,8 +505,7 @@ se è un oggetto deve contenere le proprietà message e title
   </div>
   
 
-  <p>function genText</p>
-
+  
 
   <div class='pre p1 fill-light mt0'>genText(setter: any, setter.text.title: any, setter.text.message: any): any</div>
   
@@ -654,8 +649,7 @@ se è un oggetto deve contenere le proprietà message e title
   </div>
   
 
-  <p>function genBox</p>
-
+  
 
   <div class='pre p1 fill-light mt0'>genBox(setter: any, setter.overlay.overZindex: any, setter.box.class: any, setter.box.cssStyle: any): any</div>
   
@@ -740,18 +734,17 @@ se è un oggetto deve contenere le proprietà message e title
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='xalertopen'>
-      xAlertOpen
+    <h3 class='fl m0' id='open'>
+      open
     </h3>
     
     
   </div>
   
 
-  <p>function xAlertOpen</p>
+  
 
-
-  <div class='pre p1 fill-light mt0'>xAlertOpen(message: any): any</div>
+  <div class='pre p1 fill-light mt0'>open(message: any): any</div>
   
   
 
@@ -768,7 +761,7 @@ se è un oggetto deve contenere le proprietà message e title
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>message</span> <code class='quiet'>(any)</code>
-	    , può essere una stringa o un oggetto con le proprietà "title:'', message:''"
+	    , può essere una stringa o un oggetto con le proprietà {"title:'', message:''"}
 
           </div>
           
@@ -808,19 +801,18 @@ se è un oggetto deve contenere le proprietà message e title
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='xalertclose'>
-      xAlertClose
+    <h3 class='fl m0' id='close'>
+      close
     </h3>
     
     
   </div>
   
 
-  <p>function xAlertClose</p>
-<p>chiude xAlert</p>
+  <p>chiude xAlert</p>
 
 
-  <div class='pre p1 fill-light mt0'>xAlertClose()</div>
+  <div class='pre p1 fill-light mt0'>close()</div>
   
   
 
@@ -863,8 +855,7 @@ se è un oggetto deve contenere le proprietà message e title
   </div>
   
 
-  <p>function destroy</p>
-<p>remove xAlert from the DOM</p>
+  <p>remove xAlert from the DOM</p>
 
 
   <div class='pre p1 fill-light mt0'>destroy()</div>

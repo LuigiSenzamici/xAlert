@@ -4,8 +4,6 @@
  */
 module.exports=(function(){
     /**
-     *function genOverlay
-     *
      * @param setter.overlay.overZIndex: ha un valore di default altissimo nel caso è settabile
      * @param setter.overlay.overColor: di default è bianco, indicare separati da virgola i valori rgb
      * @param setter.overlay.overOpacity: di default 0.5
@@ -35,11 +33,9 @@ module.exports=(function(){
     }
 
     /**
-     * function _AlertClose
-     *
      * chiude xAlert accedendo direttamente al DOM (no via istanza)
      */
-    function _xAlertClose(){
+    function _close(){
         var overlay = document.getElementById('xAlert_overlay');
         var box = document.getElementById('xAlert_box');
         box.style.display ='none';
@@ -47,14 +43,12 @@ module.exports=(function(){
     }
 
     /**
-     * function xAlertOpen
-     *
      * apre xAlert accedendo direttamente al DOM
      * @param message, se impostato cambia la descrizione inserita nell'init,
      * se è un oggetto deve contenere le proprietà message e title
      * @returns divElement ritorna il nodo box
      */
-    function _xAlertOpen(message){
+    function _open(message){
         function setText(nodo, testo){
             if(testo!=null && testo!=undefined && testo!='' && testo.length > 0) {
                 var text = document.getElementById(nodo);
@@ -85,8 +79,6 @@ module.exports=(function(){
     }
 
     /**
-     * function genButton
-     *
      * @param setter.button.text testo da visualizzare sul bottone, default è "OK"
      * @param setter.button.backColor  colore del bottone default è "green"
      * @param setter.button.cssStyle style inline del bottone nel formato css "prop:value;...prop:value;"
@@ -96,7 +88,7 @@ module.exports=(function(){
         if(setter === undefined)setter = {};
         if(setter.button === undefined)setter.button ={};
 
-        var onClickEvent =  setter.button.onClick || _xAlertClose;
+        var onClickEvent =  setter.button.onClick || _close;
         var classe = setter.button.class || null;
         var cssStyle = setter.button.cssStyle || null;
 
@@ -124,8 +116,6 @@ module.exports=(function(){
     }
 
     /**
-     * function genText
-     *
      * @param setter.text.title, titolo di xAlert
      * @param setter.text.message, testo da mostrare nel messaggio
      * @param setter.text.title.cssStyle style inline del titolo nel formato css "prop:value;...prop:value;"
@@ -189,8 +179,6 @@ module.exports=(function(){
     }
 
     /**
-     * function genBox
-     *
      * @param setter.overlay.overZindex, serve a mettere il box sopra all'overlay (passato automaticamente)
      * @param setter.box.class, classi da assegnare al box formato stringa separata da spazi
      * @param setter.box.cssStyle, stile inline per il box formato css "prop:value;... prop:value;"
@@ -230,13 +218,11 @@ module.exports=(function(){
     }
 
     /**
-     * function xAlertOpen
-     *
-     * @param message, può essere una stringa o un oggetto con le proprietà "title:'', message:''"
+     * @param message, può essere una stringa o un oggetto con le proprietà {"title:'', message:''"}
      * @returns void, setta il messaggio e mostra la finestra centrata
      */
-    function xAlertOpen(message) {
-        var box = _xAlertOpen(message);
+    function open(message) {
+        var box = _open(message);
         var bH = window.innerHeight/2;
         var maxDim = '35%';
         var bW = 0;
@@ -255,16 +241,12 @@ module.exports=(function(){
     }
 
     /**
-     * function xAlertClose
-     *
      * chiude xAlert
      */
-    function xAlertClose(){
-        _xAlertClose();
+    function close(){
+        _close();
     }
     /**
-     * function destroy
-     *
      * remove xAlert from the DOM
      */
     function destroy(){
@@ -305,8 +287,8 @@ module.exports=(function(){
     }
     return {
         init: init,
-        open: xAlertOpen,
+        open: open,
         destroy : destroy,
-        close: xAlertClose,
+        close: close,
     }
 })();
