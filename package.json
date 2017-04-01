@@ -1,11 +1,9 @@
 {
   "name": "xalert",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A better modal Alert",
   "main": "xAlert.js",
-  "directories": {
-    "doc": "doc"
-  },
+  "directories": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,12 +15,15 @@
     "modal",
     "alert"
   ],
-  "author": "unkitties (luigisenzamici@gmail.com)",
+  "author": "UnKitties (luigisenzamici@gmail.com)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/UnKitties/xAlert/issues"
   },
   "homepage": "https://github.com/UnKitties/xAlert#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-documentation": "^3.1.0"
+  },
   "dependencies": {}
 }

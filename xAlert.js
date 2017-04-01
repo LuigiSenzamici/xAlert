@@ -1,7 +1,4 @@
-/**
- * Created by luigisenzamici.
- * xAlert sostituisce la funzione alert() di javascript
- */
+var U = require('underscore-selector');
 module.exports=(function(){
     /**
      * @param setter.overlay.overZIndex: ha un valore di default altissimo nel caso è settabile
@@ -9,11 +6,11 @@ module.exports=(function(){
      * @param setter.overlay.overOpacity: di default 0.5
      * @returns divElement con display: none a grandezza pieno schermo
      */
-    function genOverlay(setter){
+    function _genOverlay(setter){
         if(setter === undefined)setter = {};
         if(setter.overlay === undefined)setter.overlay = {};
         var overlayZIndex = setter.overlay.overZIndex || 100000;
-        var overlayColor = setter.overlay.overColor || "0, 0, 0";
+        var overlayColor = setter.overlay.overColor || "255, 255, 255";
         var overlayOpacity = setter.overlay.overOpacity || "0.5";
 
 
@@ -84,7 +81,7 @@ module.exports=(function(){
      * @param setter.button.cssStyle style inline del bottone nel formato css "prop:value;...prop:value;"
      * @param setter.button.class, classi da assegnare al box formato stringa separata da spazi
      */
-    function genButton(setter){
+    function _genButton(setter){
         if(setter === undefined)setter = {};
         if(setter.button === undefined)setter.button ={};
 
@@ -124,7 +121,7 @@ module.exports=(function(){
      * @param setter.text.message.class, classi da assegnare al testo formato stringa separata da spazi
      * @returns divElement contiene il testo da mostrare
      */
-    function genText(setter){
+    function _genText(setter){
         if(setter === undefined)setter = {};
         if(setter.text === undefined) setter.text = {};
         if(setter.text.title === undefined) setter.text.title = {};
@@ -184,7 +181,7 @@ module.exports=(function(){
      * @param setter.box.cssStyle, stile inline per il box formato css "prop:value;... prop:value;"
      * @returns divElement div contenitore del messaggio e bottone ok
      */
-    function genBox(setter) {
+    function _genBox(setter) {
         if(setter === undefined)setter = {};
         if (setter.overlay === undefined) setter.overlay = {};
         if(setter.box === undefined) setter.box = {};
@@ -209,8 +206,8 @@ module.exports=(function(){
         if(classe)box.setAttribute('class', classe);
         if(cssStyle)box.setAttribute('style', cssStyle);
         box.setAttribute('id', 'xAlert_box');
-        var text = genText(setter);
-        var button = genButton(setter);
+        var text = _genText(setter);
+        var button = _genButton(setter);
         box.appendChild(text);
         box.appendChild(button);
 
@@ -280,8 +277,8 @@ module.exports=(function(){
      *@returns divElement, divElement ritorna un div che fa da overlay e un div che mostra il messaggio
      */
     function init(setter){
-        var overlay = genOverlay(setter);
-        var box = genBox(setter);
+        var overlay = _genOverlay(setter);
+        var box = _genBox(setter);
         document.body.appendChild(overlay);
         document.body.appendChild(box);
     }
