@@ -19,6 +19,7 @@ npm install xalert --save
 
 ## API
 **[get API doc Here!](https://github.com/UnKitties/xAlert/blob/master/MD_API_doc/API.md)**
+
 ## Tests
 
 No unit test for now.
