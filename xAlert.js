@@ -230,7 +230,7 @@ module.exports=(function(){
             bW= window.innerWidth/2;
         }
         var top =  window.innerHeight/2 - bH/2;
-        var left =  window.innerWidth/2 - ((bW*75)/100)/2;
+        var left =  maxDim != '100%'?window.innerWidth/2 - ((bW*75)/100)/2: '0';
         box.style.top = top + 'px';
         box.style.left = left + 'px';
         box.style.width = bW + 'px';
