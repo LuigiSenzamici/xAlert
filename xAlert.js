@@ -1,42 +1,39 @@
-//var U = require('underscore-selector');
-module.exports=(function(){
+var U = require('underscore_selector');
+module.exports = (function () {
     /**
-     * @param setter.overlay.overZIndex: ha un valore di default altissimo nel caso è settabile
-     * @param setter.overlay.overColor: di default è bianco, indicare separati da virgola i valori rgb
-     * @param setter.overlay.overOpacity: di default 0.5
-     * @returns divElement con display: none a grandezza pieno schermo
+     * @param {object} setter, setter object for gen overlay
+     * @param {integer} setter.overlay.overZIndex: overaly zIndex default = 100000
+     * @param {string} setter.overlay.overColor: rgb value colon separated default "0, 0, 0";
+     * @param {number} setter.overlay.overOpacity: 0 <= value <= 1, default 0.5
+     * @returns {divElement} with display property setted on 'none' and full screen dimension
      */
-    function _genOverlay(setter){
-        if(setter === undefined)setter = {};
-        if(setter.overlay === undefined)setter.overlay = {};
+    function _genOverlay(setter) {
+        if (setter === undefined) setter = {};
+        if (setter.overlay === undefined) setter.overlay = {};
         var overlayZIndex = setter.overlay.overZIndex || 100000;
-        var overlayColor = setter.overlay.overColor || "255, 255, 255";
+        var overlayColor = setter.overlay.overColor || "0, 0, 0";
         var overlayOpacity = setter.overlay.overOpacity || "0.5";
-
-
         var overlayBackColor = "rgba(" + overlayColor + ", " + overlayOpacity + ")";
         var overlay = document.createElement('div');
-        overlay.style.display = 'none';
-        overlay.style.position = 'fixed';
-        overlay.style.top=0;
-        overlay.style.left=0;
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.zIndex = overlayZIndex;
-        overlay.style.backgroundColor = overlayBackColor;
-
-        overlay.setAttribute('id', 'xAlert_overlay');
+        U(overlay).css({
+            display: 'none',
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            width: '100%',
+            height: '100%',
+            zIndex: overlayZIndex,
+            backgroundColor: overlayBackColor
+        }).attr('id', 'xAlert_overlay');
         return overlay;
     }
 
     /**
      * chiude xAlert accedendo direttamente al DOM (no via istanza)
      */
-    function _close(){
-        var overlay = document.getElementById('xAlert_overlay');
-        var box = document.getElementById('xAlert_box');
-        box.style.display ='none';
-        overlay.style.display = 'none';
+    function _close() {
+        U('#xAlert_overlay').css({ display: 'none' });
+        U('#xAlert_box').css({ display: 'none' });
     }
 
     /**
@@ -45,9 +42,9 @@ module.exports=(function(){
      * se è un oggetto deve contenere le proprietà message e title
      * @returns divElement ritorna il nodo box
      */
-    function _open(message){
-        function setText(nodo, testo){
-            if(testo!=null && testo!=undefined && testo!='' && testo.length > 0) {
+    function _open(message) {
+        function setText(nodo, testo) {
+            if (testo != null && testo != undefined && testo != '' && testo.length > 0) {
                 var text = document.getElementById(nodo);
 
                 while (text.hasChildNodes()) {
@@ -60,18 +57,18 @@ module.exports=(function(){
         var overlay = document.getElementById('xAlert_overlay');
         var box = document.getElementById('xAlert_box');
         var title = document.getElementById('xAlert_title');
-        if(message!=undefined && message!=null && message!='') {
-            if(typeof message === 'string'){
+        if (message != undefined && message != null && message != '') {
+            if (typeof message === 'string') {
                 setText('xAlert_text', message);
-                title.style.display = 'none';
-            }else if(typeof message === 'object'){
+                U(title).css({ display: 'none' });
+            } else if (typeof message === 'object') {
                 setText('xAlert_title', message.title);
-                title.style.display = 'block';
+                U(title).css({ display: 'block' });
                 setText('xAlert_text', message.message);
             }
         }
-        box.style.display ='block';
-        overlay.style.display = 'block';
+        U(box).css({ display: 'block' });
+        U(overlay).css({ display: 'block' });
         return box;
     }
 
@@ -81,11 +78,11 @@ module.exports=(function(){
      * @param setter.button.cssStyle style inline del bottone nel formato css "prop:value;...prop:value;"
      * @param setter.button.class, classi da assegnare al box formato stringa separata da spazi
      */
-    function _genButton(setter){
-        if(setter === undefined)setter = {};
-        if(setter.button === undefined)setter.button ={};
+    function _genButton(setter) {
+        if (setter === undefined) setter = {};
+        if (setter.button === undefined) setter.button = {};
 
-        var onClickEvent =  setter.button.onClick || _close;
+        var onClickEvent = setter.button.onClick || _close;
         var classe = setter.button.class || null;
         var cssStyle = setter.button.cssStyle || null;
 
@@ -93,18 +90,19 @@ module.exports=(function(){
         var button = document.createElement('button');
         var textNode = setter.button.text || 'OK';
         var text = document.createTextNode(textNode);
+        U(button).css({
+            display: 'block',
+            minWidth: '50px',
+            minHeight: '30px',
+            marginTop: '5px',
+            marginBottom: '5px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            backgroundColor: 'green',
+        });
 
-        button.style.display = 'block';
-        button.style.minWidth = '50px';
-        button.style.minHeight = '30px';
-        button.style.marginTop = '5px';
-        button.style.marginBottom = '5px';
-        button.style.marginLeft = 'auto';
-        button.style.marginRight = 'auto';
-        button.style.backgroundColor = 'green';
-
-        if(classe)button.setAttribute('class', classe);
-        if(cssStyle)button.setAttribute('style', cssStyle);
+        if (classe) U(button).attr('class', classe);
+        if (cssStyle) U(button).attr('style', cssStyle);
         button.appendChild(text);
 
         button.addEventListener('click', onClickEvent);
@@ -121,11 +119,11 @@ module.exports=(function(){
      * @param setter.text.message.class, classi da assegnare al testo formato stringa separata da spazi
      * @returns divElement contiene il testo da mostrare
      */
-    function _genText(setter){
-        if(setter === undefined)setter = {};
-        if(setter.text === undefined) setter.text = {};
-        if(setter.text.title === undefined) setter.text.title = {};
-        if(setter.text.message === undefined) setter.text.message ='inserire qui il testo del messaggio attraverso la proprietà message';
+    function _genText(setter) {
+        if (setter === undefined) setter = {};
+        if (setter.text === undefined) setter.text = {};
+        if (setter.text.title === undefined) setter.text.title = {};
+        if (setter.text.message === undefined) setter.text.message = 'inserire qui il testo del messaggio attraverso la proprietà message';
         var TitleCssStyle = setter.text.title.cssStyle || null;
         var TitleClasse = setter.text.title.class || null;
         var MessageCssStyle = setter.text.message.cssStyle || null;
@@ -133,41 +131,48 @@ module.exports=(function(){
 
         var divTesto = document.createElement('div');
         var testoMessaggio = document.createTextNode(setter.text.message);
-        divTesto.style.display = 'block';
-        divTesto.style.padding = '20px';
-        divTesto.style.maxHeight='80%';
-        divTesto.style.maxWidth ='100%';
-        divTesto.style.marginLeft = 'auto';
-        divTesto.style.marginRight = 'auto';
-        divTesto.style.textAlign='center';
+        U(divTesto).css({
+            display: 'block',
+            padding: '20px',
+            maxHeight: '80%',
+            maxWidth: '100%',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            textAlign: 'center',
+        });
 
-        if(MessageCssStyle) divTesto.setAttribute('style', MessageCssStyle);
-        if(MessageClasse) divTesto.setAttribute('class', MessageClasse);
+        if (MessageCssStyle) U(divTesto).attr('style', MessageCssStyle);
+        if (MessageClasse) U(divTesto).attr('class', MessageClasse);
         divTesto.setAttribute('id', 'xAlert_text');
         divTesto.appendChild(testoMessaggio);
 
         var divTitolo = document.createElement('div');
         var testoTitolo = document.createTextNode(setter.text.title);
-        divTitolo.style.display = (setter.text.title)?'block':'none';
-        divTitolo.style.padding = '20px';
-        divTitolo.style.maxHeight='20%';
-        divTitolo.style.maxWidth ='100%';
-        divTitolo.style.marginLeft = 'auto';
-        divTitolo.style.marginRight = 'auto';
-        divTitolo.style.textAlign='center';
+        U(divTitolo).css({
+            display: (setter.text.title) ? 'block' : 'none',
+            padding: '20px',
+            maxHeight: '20%',
+            maxWidth: '100%',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            textAlign: 'center',
+        });
 
-        if(TitleCssStyle) divTitolo.setAttribute('style', TitleCssStyle);
-        if(TitleClasse) divTitolo.setAttribute('class', TitleClasse);
+        if (TitleCssStyle) U(divTitolo).attr('style', TitleCssStyle);
+        if (TitleClasse) U(divTitolo).attr('class', TitleClasse);
         divTitolo.setAttribute('id', 'xAlert_title');
         divTitolo.appendChild(testoTitolo);
+
         var divContenitore = document.createElement('div');
-        divContenitore.style.display = 'block';
-        divContenitore.style.padding = '0px';
-        divContenitore.style.maxHeight='90%';
-        divContenitore.style.maxWidth ='100%';
-        divContenitore.style.marginLeft = 'auto';
-        divContenitore.style.marginRight = 'auto';
-        divContenitore.style.textAlign='center';
+        U(divContenitore).css({
+            display: 'block',
+            padding: '0px',
+            maxHeight: '90%',
+            maxWidth: '100%',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            textAlign: 'center',
+        });
 
         divContenitore.appendChild(divTitolo);
         divContenitore.appendChild(divTesto);
@@ -182,29 +187,30 @@ module.exports=(function(){
      * @returns divElement div contenitore del messaggio e bottone ok
      */
     function _genBox(setter) {
-        if(setter === undefined)setter = {};
+        if (setter === undefined) setter = {};
         if (setter.overlay === undefined) setter.overlay = {};
-        if(setter.box === undefined) setter.box = {};
+        if (setter.box === undefined) setter.box = {};
 
 
         var classe = setter.box.class || null;
         var cssStyle = setter.box.cssStyle || null;
 
         var box = document.createElement('div');
-        box.style.display = 'none';
-        box.style.position = 'fixed';
-        box.style.top = 0;
-        box.style.left = 0;
-        box.style.maxWidth = '35%';
-        box.style.maxHeight = '50%';
-        box.style.padding = '10px';
-        box.style.textAlign = 'center';
-        box.style.backgroundColor = 'white';
-        box.style.border = '1px solid gray';
-        box.style.zIndex = setter.overlay.overZindex + 1 || 100001;
-
-        if(classe)box.setAttribute('class', classe);
-        if(cssStyle)box.setAttribute('style', cssStyle);
+        U(box).css({
+            display: 'none',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            maxWidth: '35%',
+            maxHeight: '50%',
+            padding: '10px',
+            textAlign: 'center',
+            backgroundColor: 'white',
+            border: '1px solid gray',
+            zIndex: setter.overlay.overZindex + 1 || 100001,
+        });
+        if (classe) U(box).attr('class', classe);
+        if (cssStyle) U(box).attr('style', cssStyle);
         box.setAttribute('id', 'xAlert_box');
         var text = _genText(setter);
         var button = _genButton(setter);
@@ -220,63 +226,65 @@ module.exports=(function(){
      */
     function open(message) {
         var box = _open(message);
-        var bH = window.innerHeight/2;
+        var bH = window.innerHeight / 2;
         var maxDim = '35%';
         var bW = 0;
-        if(window.innerWidth <= 767){
+        if (window.innerWidth <= 767) {
             maxDim = '100%';
-            bW= window.innerWidth;
-        }else{
-            bW= window.innerWidth/2;
+            bW = window.innerWidth;
+        } else {
+            bW = window.innerWidth / 2;
         }
-        var top =  window.innerHeight/2 - bH/2;
-        var left =  maxDim != '100%'?window.innerWidth/2 - ((bW*75)/100)/2: '0';
-        box.style.top = top + 'px';
-        box.style.left = left + 'px';
-        box.style.width = bW + 'px';
-        box.style.maxWidth = maxDim;
+        var top = window.innerHeight / 2 - bH / 2;
+        var left = maxDim != '100%' ? window.innerWidth / 2 - ((bW * 75) / 100) / 2 : '0';
+        U(box).css({
+            top: top + 'px',
+            left: left + 'px',
+            width: bW + 'px',
+            maxWidth: maxDim,
+        });
     }
 
     /**
      * chiude xAlert
      */
-    function close(){
+    function close() {
         _close();
     }
     /**
      * remove xAlert from the DOM
      */
-    function destroy(){
+    function destroy() {
         var overlay = document.getElementById('xAlert_overlay');
         var box = document.getElementById('xAlert_box');
         document.body.removeChild(overlay);
         document.body.removeChild(box);
     }
 
-     /**
-     * function init
-     * le proprietà del setter sono tutte opzionali
-     * @param setter = oggetto di settaggio
-     * @param setter.overlay.overZIndex : (number)  ha un valore di default altissimo nel caso è settabile
-     * @param setter.overlay.overColor: (string) di default è bianco, indicare separati da virgola i valori rgb
-     * @param setter.overlay.overOpacity: (0<number<1) default = 0.5
-     * @param setter.box.class: (string) elenco delle classi da applicare separate da uno spazio
-     * @param setter.box.cssStyle:(string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"
-     * @param setter.button.text: (string) testo visualizzato nel bottone - default = 'OK'
-     * @param setter.button.backColor: (string/#code)  colore del bottone default è "green"
-     * @param setter.button.cssStyle: (string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"
-     * @param setter.button.class: (string) elenco delle classi da applicare separate da uno spazio
-     * @param setter.button.onClick: (function) funzione da eseguire su click del bottone ok, di default chiude la finestra
-     * @param setter.text.title:(string) titolo di xAlert
-     * @param setter.text.message: (string) testo da mostrare nel messaggio
-     * @param setter.title.class: (string) elenco delle classi da applicare separate da uno spazio
-     * @param setter.title.cssStyle:(string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"
-     * @param setter.message.class: (string) elenco delle classi da applicare separate da uno spazio
-     * @param setter.message.cssStyle:(string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"*
+    /**
+    * function init
+    * le proprietà del setter sono tutte opzionali
+    * @param setter = oggetto di settaggio
+    * @param setter.overlay.overZIndex : (number)  ha un valore di default altissimo nel caso è settabile
+    * @param setter.overlay.overColor: (string) di default è bianco, indicare separati da virgola i valori rgb
+    * @param setter.overlay.overOpacity: (0<number<1) default = 0.5
+    * @param setter.box.class: (string) elenco delle classi da applicare separate da uno spazio
+    * @param setter.box.cssStyle:(string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"
+    * @param setter.button.text: (string) testo visualizzato nel bottone - default = 'OK'
+    * @param setter.button.backColor: (string/#code)  colore del bottone default è "green"
+    * @param setter.button.cssStyle: (string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"
+    * @param setter.button.class: (string) elenco delle classi da applicare separate da uno spazio
+    * @param setter.button.onClick: (function) funzione da eseguire su click del bottone ok, di default chiude la finestra
+    * @param setter.text.title:(string) titolo di xAlert
+    * @param setter.text.message: (string) testo da mostrare nel messaggio
+    * @param setter.title.class: (string) elenco delle classi da applicare separate da uno spazio
+    * @param setter.title.cssStyle:(string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"
+    * @param setter.message.class: (string) elenco delle classi da applicare separate da uno spazio
+    * @param setter.message.cssStyle:(string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"*
 
-     *@returns divElement, divElement ritorna un div che fa da overlay e un div che mostra il messaggio
-     */
-    function init(setter){
+    *@returns divElement, divElement ritorna un div che fa da overlay e un div che mostra il messaggio
+    */
+    function init(setter) {
         var overlay = _genOverlay(setter);
         var box = _genBox(setter);
         document.body.appendChild(overlay);
@@ -285,7 +293,7 @@ module.exports=(function(){
     return {
         init: init,
         open: open,
-        destroy : destroy,
+        destroy: destroy,
         close: close,
     }
 })();

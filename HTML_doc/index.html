@@ -148,7 +148,7 @@
 
   
 
-  <div class='pre p1 fill-light mt0'>_genOverlay(setter: any, setter.overlay.overZIndex: any, setter.overlay.overColor: any, setter.overlay.overOpacity: any): any</div>
+  <div class='pre p1 fill-light mt0'>_genOverlay(setter: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, setter.overlay.overZIndex: integer, setter.overlay.overColor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, setter.overlay.overOpacity: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): divElement</div>
   
   
 
@@ -164,16 +164,8 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>setter</span> <code class='quiet'>(any)</code>
-	    
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>setter.overlay.overZIndex</span> <code class='quiet'>(any)</code>
-	    : ha un valore di default altissimo nel caso è settabile
+            <span class='code bold'>setter</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+	    , setter object for gen overlay
 
           </div>
           
@@ -181,8 +173,8 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>setter.overlay.overColor</span> <code class='quiet'>(any)</code>
-	    : di default è bianco, indicare separati da virgola i valori rgb
+            <span class='code bold'>setter.overlay.overZIndex</span> <code class='quiet'>(integer)</code>
+	    : overaly zIndex default = 100000
 
           </div>
           
@@ -190,8 +182,17 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>setter.overlay.overOpacity</span> <code class='quiet'>(any)</code>
-	    : di default 0.5
+            <span class='code bold'>setter.overlay.overColor</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    : rgb value colon separated default "0, 0, 0";
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.overlay.overOpacity</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    : 0 &#x3C;= value &#x3C;= 1, default 0.5
 
           </div>
           
@@ -205,8 +206,8 @@
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>any</code>:
-        divElement con display: none a grandezza pieno schermo
+      <code>divElement</code>:
+        with display property setted on 'none' and full screen dimension
 
       
     

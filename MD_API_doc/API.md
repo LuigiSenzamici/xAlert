@@ -4,12 +4,12 @@
 
 **Parameters**
 
--   `setter`  
--   `setter.overlay.overZIndex`  : ha un valore di default altissimo nel caso è settabile
--   `setter.overlay.overColor`  : di default è bianco, indicare separati da virgola i valori rgb
--   `setter.overlay.overOpacity`  : di default 0.5
+-   `setter` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** , setter object for gen overlay
+-   `setter.overlay.overZIndex` **integer** : overaly zIndex default = 100000
+-   `setter.overlay.overColor` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** : rgb value colon separated default "0, 0, 0";
+-   `setter.overlay.overOpacity` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** : 0 &lt;= value &lt;= 1, default 0.5
 
-Returns **any** divElement con display: none a grandezza pieno schermo
+Returns **divElement** with display property setted on 'none' and full screen dimension
 
 # \_close
 
