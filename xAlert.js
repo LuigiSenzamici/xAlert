@@ -133,7 +133,8 @@ module.exports = (function () {
         if (setter === undefined) setter = {};
         if (setter.text === undefined) setter.text = {};
         if (setter.text.title === undefined) setter.text.title = {};
-        if (setter.text.message === undefined) setter.text.message.text = 'inserire qui il testo del messaggio attraverso la proprietà message';
+        if (setter.text.message === undefined) setter.text.message = {};
+        setter.text.message.text = 'inserire qui il testo del messaggio attraverso la proprietà message';
         var TitleCssStyle = setter.text.title.cssStyle || null;
         var TitleClasse = setter.text.title.class || null;
         var MessageCssStyle = setter.text.message.cssStyle || null;
