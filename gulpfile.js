@@ -7,7 +7,7 @@ gulp.task('doc:html', function () {
       .pipe(gulp.dest('./HTML_doc'));
 });
 gulp.task('doc:readme', function () {
-    return gulp.src('./underscore-selector.js')
+    return gulp.src(source)
       .pipe(doc('md'))
       .pipe(gulp.dest('./MD_API_doc'));
 });

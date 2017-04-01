@@ -1,4 +1,4 @@
-var U = require('underscore-selector');
+//var U = require('underscore-selector');
 module.exports=(function(){
     /**
      * @param setter.overlay.overZIndex: ha un valore di default altissimo nel caso è settabile
