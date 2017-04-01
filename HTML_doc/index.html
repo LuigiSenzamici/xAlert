@@ -23,6 +23,106 @@
           <div id='toc'>
             <ul class='list-reset h5 py1-ul'>
               
+                
+                <li><a
+                  href='#_genoverlay'
+                  class="">
+                  _genOverlay
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#_close'
+                  class="">
+                  _close
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#_open'
+                  class="">
+                  _open
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#_genbutton'
+                  class="">
+                  _genButton
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#_gentext'
+                  class="">
+                  _genText
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#_genbox'
+                  class="">
+                  _genBox
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#open'
+                  class="">
+                  open
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#close'
+                  class="">
+                  close
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#destroy'
+                  class="">
+                  destroy
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#init'
+                  class="">
+                  init
+                  
+                </a>
+                
+                </li>
+              
             </ul>
           </div>
           <div class='mt1 h6 quiet'>
@@ -31,6 +131,917 @@
         </div>
       </div>
       <div class='fix-margin-3'>
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='_genoverlay'>
+      _genOverlay
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+  <div class='pre p1 fill-light mt0'>_genOverlay(setter: any, setter.overlay.overZIndex: any, setter.overlay.overColor: any, setter.overlay.overOpacity: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.overlay.overZIndex</span> <code class='quiet'>(any)</code>
+	    : ha un valore di default altissimo nel caso è settabile
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.overlay.overColor</span> <code class='quiet'>(any)</code>
+	    : di default è bianco, indicare separati da virgola i valori rgb
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.overlay.overOpacity</span> <code class='quiet'>(any)</code>
+	    : di default 0.5
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        divElement con display: none a grandezza pieno schermo
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='_close'>
+      _close
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>chiude xAlert accedendo direttamente al DOM (no via istanza)</p>
+
+
+  <div class='pre p1 fill-light mt0'>_close()</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='_open'>
+      _open
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>apre xAlert accedendo direttamente al DOM</p>
+
+
+  <div class='pre p1 fill-light mt0'>_open(message: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>message</span> <code class='quiet'>(any)</code>
+	    , se impostato cambia la descrizione inserita nell'init,
+se è un oggetto deve contenere le proprietà message e title
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        divElement ritorna il nodo box
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='_genbutton'>
+      _genButton
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+  <div class='pre p1 fill-light mt0'>_genButton(setter: any, setter.button.text: any, setter.button.backColor: any, setter.button.cssStyle: any, setter.button.class: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.button.text</span> <code class='quiet'>(any)</code>
+	    testo da visualizzare sul bottone, default è "OK"
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.button.backColor</span> <code class='quiet'>(any)</code>
+	    colore del bottone default è "green"
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.button.cssStyle</span> <code class='quiet'>(any)</code>
+	    style inline del bottone nel formato css "prop:value;...prop:value;"
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.button.class</span> <code class='quiet'>(any)</code>
+	    , classi da assegnare al box formato stringa separata da spazi
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='_gentext'>
+      _genText
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+  <div class='pre p1 fill-light mt0'>_genText(setter: any, setter.text.title: any, setter.text.message: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.text.title</span> <code class='quiet'>(any)</code>
+	    , titolo di xAlert
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>setter.text.title.cssStyle</span> <code class='quiet'>any</code>
+                  </td>
+                  <td class='break-word'><span>style inline del titolo nel formato css "prop:value;...prop:value;"
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>setter.text.title.class</span> <code class='quiet'>any</code>
+                  </td>
+                  <td class='break-word'><span>, classi da assegnare al titolo formato stringa separata da spazi
+</span></td>
+                </tr>
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.text.message</span> <code class='quiet'>(any)</code>
+	    , testo da mostrare nel messaggio
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>setter.text.message.cssStyle</span> <code class='quiet'>any</code>
+                  </td>
+                  <td class='break-word'><span>style inline del testo nel formato css "prop:value;...prop:value;"
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>setter.text.message.class</span> <code class='quiet'>any</code>
+                  </td>
+                  <td class='break-word'><span>, classi da assegnare al testo formato stringa separata da spazi
+</span></td>
+                </tr>
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        divElement contiene il testo da mostrare
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='_genbox'>
+      _genBox
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+  <div class='pre p1 fill-light mt0'>_genBox(setter: any, setter.overlay.overZindex: any, setter.box.class: any, setter.box.cssStyle: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.overlay.overZindex</span> <code class='quiet'>(any)</code>
+	    , serve a mettere il box sopra all'overlay (passato automaticamente)
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.box.class</span> <code class='quiet'>(any)</code>
+	    , classi da assegnare al box formato stringa separata da spazi
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.box.cssStyle</span> <code class='quiet'>(any)</code>
+	    , stile inline per il box formato css "prop:value;... prop:value;"
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        divElement div contenitore del messaggio e bottone ok
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='open'>
+      open
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+  <div class='pre p1 fill-light mt0'>open(message: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>message</span> <code class='quiet'>(any)</code>
+	    , può essere una stringa o un oggetto con le proprietà {"title:'', message:''"}
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        void, setta il messaggio e mostra la finestra centrata
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='close'>
+      close
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>chiude xAlert</p>
+
+
+  <div class='pre p1 fill-light mt0'>close()</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='destroy'>
+      destroy
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>remove xAlert from the DOM</p>
+
+
+  <div class='pre p1 fill-light mt0'>destroy()</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='init'>
+      init
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>function init
+le proprietà del setter sono tutte opzionali</p>
+
+
+  <div class='pre p1 fill-light mt0'>init(setter: any, setter.overlay.overZIndex: any, setter.overlay.overColor: any, setter.overlay.overOpacity: any, setter.box.class: any, setter.box.cssStyle: any, setter.button.text: any, setter.button.backColor: any, setter.button.cssStyle: any, setter.button.class: any, setter.button.onClick: any, setter.text.title: any, setter.text.message: any, setter.title.class: any, setter.title.cssStyle: any, setter.message.class: any, setter.message.cssStyle: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter</span> <code class='quiet'>(any)</code>
+	    = oggetto di settaggio
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.overlay.overZIndex</span> <code class='quiet'>(any)</code>
+	    : (number)  ha un valore di default altissimo nel caso è settabile
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.overlay.overColor</span> <code class='quiet'>(any)</code>
+	    : (string) di default è bianco, indicare separati da virgola i valori rgb
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.overlay.overOpacity</span> <code class='quiet'>(any)</code>
+	    : (0&#x3C;number&#x3C;1) default = 0.5
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.box.class</span> <code class='quiet'>(any)</code>
+	    : (string) elenco delle classi da applicare separate da uno spazio
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.box.cssStyle</span> <code class='quiet'>(any)</code>
+	    :(string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.button.text</span> <code class='quiet'>(any)</code>
+	    : (string) testo visualizzato nel bottone - default = 'OK'
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.button.backColor</span> <code class='quiet'>(any)</code>
+	    : (string/#code)  colore del bottone default è "green"
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.button.cssStyle</span> <code class='quiet'>(any)</code>
+	    : (string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.button.class</span> <code class='quiet'>(any)</code>
+	    : (string) elenco delle classi da applicare separate da uno spazio
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.button.onClick</span> <code class='quiet'>(any)</code>
+	    : (function) funzione da eseguire su click del bottone ok, di default chiude la finestra
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.text.title</span> <code class='quiet'>(any)</code>
+	    :(string) titolo di xAlert
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.text.message</span> <code class='quiet'>(any)</code>
+	    : (string) testo da mostrare nel messaggio
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.title.class</span> <code class='quiet'>(any)</code>
+	    : (string) elenco delle classi da applicare separate da uno spazio
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.title.cssStyle</span> <code class='quiet'>(any)</code>
+	    :(string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.message.class</span> <code class='quiet'>(any)</code>
+	    : (string) elenco delle classi da applicare separate da uno spazio
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>setter.message.cssStyle</span> <code class='quiet'>(any)</code>
+	    :(string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"*
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        divElement, divElement ritorna un div che fa da overlay e un div che mostra il messaggio
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
         
       </div>
     </div>
