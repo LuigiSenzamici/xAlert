@@ -1,8 +1,8 @@
 ﻿var gulp = require('gulp');
 var doc = require('gulp-documentation');
-
+var source = 'xAlert.js';
 gulp.task('doc:html', function () {
-    return gulp.src('./underscore-selector.js')
+    return gulp.src(source)
       .pipe(doc('html'))
       .pipe(gulp.dest('./HTML_doc'));
 });
