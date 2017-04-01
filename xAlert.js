@@ -1,10 +1,11 @@
 var U = require('underscore_selector');
 module.exports = (function () {
     /**
-     * @param {object} setter, setter object for gen overlay
-     * @param {integer} setter.overlay.overZIndex: overaly zIndex default = 100000
-     * @param {string} setter.overlay.overColor: rgb value colon separated default "0, 0, 0";
-     * @param {number} setter.overlay.overOpacity: 0 <= value <= 1, default 0.5
+     * @private
+     * @param {object} setter setter object for gen overlay
+     * @property {integer} setter.overlay.overZIndex overlay zIndex default = 100000
+     * @property {string} setter.overlay.overColor rgb value colon separated default "0, 0, 0";
+     * @property {number} setter.overlay.overOpacity 0 <= value <= 1, default 0.5
      * @returns {divElement} with display property setted on 'none' and full screen dimension
      */
     function _genOverlay(setter) {
@@ -29,7 +30,8 @@ module.exports = (function () {
     }
 
     /**
-     * chiude xAlert accedendo direttamente al DOM (no via istanza)
+     *@private
+     * close xAlert 
      */
     function _close() {
         U('#xAlert_overlay').css({ display: 'none' });
@@ -37,10 +39,12 @@ module.exports = (function () {
     }
 
     /**
-     * apre xAlert accedendo direttamente al DOM
-     * @param message, se impostato cambia la descrizione inserita nell'init,
-     * se è un oggetto deve contenere le proprietà message e title
-     * @returns divElement ritorna il nodo box
+     * @private
+     * open xAlert 
+     * @param {string|object} message if setted change the value setted by init(),
+     * @property {string} object.title title of message box
+     * @property {string} object.message message to display
+     * @returns {divElement} box node
      */
     function _open(message) {
         function setText(nodo, testo) {
@@ -73,10 +77,14 @@ module.exports = (function () {
     }
 
     /**
-     * @param setter.button.text testo da visualizzare sul bottone, default è "OK"
-     * @param setter.button.backColor  colore del bottone default è "green"
-     * @param setter.button.cssStyle style inline del bottone nel formato css "prop:value;...prop:value;"
-     * @param setter.button.class, classi da assegnare al box formato stringa separata da spazi
+     * @private
+     * @param {object} setter.button setter object for button,
+     * @property {string} setter.button.text text to display in button, default = 'OK'
+     * @property {string} setter.button.backColor button background color, default ='green'
+     * @property {string} setter.button.cssStyle inline style inline css format "prop:value;...prop:value;"
+     * @property {string} setter.button.class classes to be assigned to button separated width space
+     * @property {function} setter.button.onClick function to be executed on click function default _close()
+     * @return {buttonElement} a button tag
      */
     function _genButton(setter) {
         if (setter === undefined) setter = {};
@@ -111,26 +119,28 @@ module.exports = (function () {
     }
 
     /**
-     * @param setter.text.title, titolo di xAlert
-     * @param setter.text.message, testo da mostrare nel messaggio
-     * @param setter.text.title.cssStyle style inline del titolo nel formato css "prop:value;...prop:value;"
-     * @param setter.text.title.class, classi da assegnare al titolo formato stringa separata da spazi
-     * @param setter.text.message.cssStyle style inline del testo nel formato css "prop:value;...prop:value;"
-     * @param setter.text.message.class, classi da assegnare al testo formato stringa separata da spazi
-     * @returns divElement contiene il testo da mostrare
+     * @private
+     * @param {object} setter.text setter object for text in box
+     * @property {string} setter.text.title.text xAlert title
+     * @property {string} setter.text.title.cssStyle inline style inline css format "prop:value;...prop:value;"
+     * @property {string} setter.text.title.class classes to be assigned to text separated width space
+     * @property {string} setter.text.message.text xAlert message
+     * @property {string} setter.text.message.cssStyle inline style inline css format "prop:value;...prop:value;"
+     * @property {string} setter.text.message.class classes to be assigned to text separated width space
+     * @returns {divElement} contain text to display
      */
     function _genText(setter) {
         if (setter === undefined) setter = {};
         if (setter.text === undefined) setter.text = {};
         if (setter.text.title === undefined) setter.text.title = {};
-        if (setter.text.message === undefined) setter.text.message = 'inserire qui il testo del messaggio attraverso la proprietà message';
+        if (setter.text.message === undefined) setter.text.message.text = 'inserire qui il testo del messaggio attraverso la proprietà message';
         var TitleCssStyle = setter.text.title.cssStyle || null;
         var TitleClasse = setter.text.title.class || null;
         var MessageCssStyle = setter.text.message.cssStyle || null;
         var MessageClasse = setter.text.message.class || null;
 
         var divTesto = document.createElement('div');
-        var testoMessaggio = document.createTextNode(setter.text.message);
+        var testoMessaggio = document.createTextNode(setter.text.message.text);
         U(divTesto).css({
             display: 'block',
             padding: '20px',
@@ -147,9 +157,9 @@ module.exports = (function () {
         divTesto.appendChild(testoMessaggio);
 
         var divTitolo = document.createElement('div');
-        var testoTitolo = document.createTextNode(setter.text.title);
+        var testoTitolo = document.createTextNode(setter.text.title.text);
         U(divTitolo).css({
-            display: (setter.text.title) ? 'block' : 'none',
+            display: (setter.text.title.text) ? 'block' : 'none',
             padding: '20px',
             maxHeight: '20%',
             maxWidth: '100%',
@@ -181,10 +191,12 @@ module.exports = (function () {
     }
 
     /**
-     * @param setter.overlay.overZindex, serve a mettere il box sopra all'overlay (passato automaticamente)
-     * @param setter.box.class, classi da assegnare al box formato stringa separata da spazi
-     * @param setter.box.cssStyle, stile inline per il box formato css "prop:value;... prop:value;"
-     * @returns divElement div contenitore del messaggio e bottone ok
+     * @private
+     * @param {object} setter setter object
+     * @property {integer} setter.overlay.overZindex automatic passed
+     * @property {string} setter.box.class classes to be assigned to text separated width space
+     * @property {string} setter.box.cssStyle inline style inline css format "prop:value;...prop:value;"
+     * @returns {divElement} box message container
      */
     function _genBox(setter) {
         if (setter === undefined) setter = {};
@@ -220,9 +232,50 @@ module.exports = (function () {
         return box;
     }
 
+
+
     /**
-     * @param message, può essere una stringa o un oggetto con le proprietà {"title:'', message:''"}
-     * @returns void, setta il messaggio e mostra la finestra centrata
+    * @param {object} setter setter object for xAlert
+    *   @property {object} setter.overlay setter for overlay
+    *       @property {integer} setter.overlay.overZIndex overlay zIndex default = 100000
+    *       @property {string} setter.overlay.overColor rgb value colon separated default "0, 0, 0";
+    *       @property {number} setter.overlay.overOpacity 0 <= value <= 1, default 0.5
+    *
+    *   @property {object} setter.box setter for box
+    *       @property {string} setter.box.class  classes to be assigned to text separated width space
+    *       @property {string} setter.box.cssStyle inline style inline css format "prop:value;...prop:value;"
+    *
+    *   @property {object} setter.button setter object for button
+    *       @property {string} setter.button.text text to display in button, default = 'OK'
+    *       @property {string} setter.button.backColor button background color, default ='green'
+    *       @property {string} setter.button.cssStyle inline style inline css format "prop:value;...prop:value;"
+    *       @property {string} setter.button.class classes to be assigned to button separated width space
+    *       @property {function} setter.button.onClick function to be executed on click function default _close()
+    *
+    *   @property {object} setter.text setter object for text in box
+    *       @property {object} setter.text.title title setter
+    *           @property {string} text.title.text xAlert title
+    *           @property {string} text.title.cssStyle inline style inline css format "prop:value;...prop:value;"
+    *           @property {string} text.title.class classes to be assigned to text separated width space
+    *
+    *       @property {object} setter.text.message message
+    *           @property {string} text.message.text xAlert message
+    *           @property {string} text.message.cssStyle inline style inline css format "prop:value;...prop:value;"
+    *           @property {string} text.message.class classes to be assigned to text separated width space
+    *
+    * @returns {divElement} an overlay and a box with message an ok button
+    */
+    function init(setter) {
+        var overlay = _genOverlay(setter);
+        var box = _genBox(setter);
+        document.body.appendChild(overlay);
+        document.body.appendChild(box);
+    }
+    /**
+     * set the message and display centered xAlert
+     * @param {string|object} message message to display in xAlert
+     * @property {string} object.title xAlert title
+     * @property {string} object.message xAlert message
      */
     function open(message) {
         var box = _open(message);
@@ -246,7 +299,7 @@ module.exports = (function () {
     }
 
     /**
-     * chiude xAlert
+     * close xAlert
      */
     function close() {
         _close();
@@ -259,36 +312,6 @@ module.exports = (function () {
         var box = document.getElementById('xAlert_box');
         document.body.removeChild(overlay);
         document.body.removeChild(box);
-    }
-
-    /**
-    * function init
-    * le proprietà del setter sono tutte opzionali
-    * @param setter = oggetto di settaggio
-    * @param setter.overlay.overZIndex : (number)  ha un valore di default altissimo nel caso è settabile
-    * @param setter.overlay.overColor: (string) di default è bianco, indicare separati da virgola i valori rgb
-    * @param setter.overlay.overOpacity: (0<number<1) default = 0.5
-    * @param setter.box.class: (string) elenco delle classi da applicare separate da uno spazio
-    * @param setter.box.cssStyle:(string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"
-    * @param setter.button.text: (string) testo visualizzato nel bottone - default = 'OK'
-    * @param setter.button.backColor: (string/#code)  colore del bottone default è "green"
-    * @param setter.button.cssStyle: (string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"
-    * @param setter.button.class: (string) elenco delle classi da applicare separate da uno spazio
-    * @param setter.button.onClick: (function) funzione da eseguire su click del bottone ok, di default chiude la finestra
-    * @param setter.text.title:(string) titolo di xAlert
-    * @param setter.text.message: (string) testo da mostrare nel messaggio
-    * @param setter.title.class: (string) elenco delle classi da applicare separate da uno spazio
-    * @param setter.title.cssStyle:(string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"
-    * @param setter.message.class: (string) elenco delle classi da applicare separate da uno spazio
-    * @param setter.message.cssStyle:(string) elenco delle regole css separate da ';' esempio: "padding: 0px; .... border: 1px solid red;"*
-
-    *@returns divElement, divElement ritorna un div che fa da overlay e un div che mostra il messaggio
-    */
-    function init(setter) {
-        var overlay = _genOverlay(setter);
-        var box = _genBox(setter);
-        document.body.appendChild(overlay);
-        document.body.appendChild(box);
     }
     return {
         init: init,
