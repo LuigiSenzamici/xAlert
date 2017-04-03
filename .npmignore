@@ -55,6 +55,8 @@ jspm_packages
 # Yarn Integrity file
 .yarn-integrity
 
+gulpfile.js
+
 MD_API_doc/*
 HTML_doc/*
 
