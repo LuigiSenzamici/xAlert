@@ -1,6 +1,6 @@
 {
   "name": "xalert",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A better modal Alert",
   "main": "xAlert.js",
   "directories": {},
