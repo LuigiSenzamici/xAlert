@@ -25,8 +25,7 @@ gulp.task('doc', ['doc:html', 'doc:readme']);
 
 gulp.task('compile:js', function(){
     return gulp.src(origin)
-        //.pipe(browserify())
-      //  .pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest(dest));
 });
 gulp.task('compile:style', function(){
