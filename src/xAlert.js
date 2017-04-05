@@ -12,20 +12,13 @@ module.exports = (function () {
         if (setter === undefined) setter = {};
         if (setter.overlay === undefined) setter.overlay = {};
         var overlayZIndex = setter.overlay.overZIndex || 100000;
-        var overlayColor = setter.overlay.overColor || "0, 0, 0";
-        var overlayOpacity = setter.overlay.overOpacity || "0.5";
+        var overlayColor = setter.overlay.overColor || null;
+        var overlayOpacity = setter.overlay.overOpacity || null;
         var overlayBackColor = "rgba(" + overlayColor + ", " + overlayOpacity + ")";
         var overlay = document.createElement('div');
-        U(overlay).css({
-            display: 'none',
-            position: 'fixed',
-            top: '0',
-            left: '0',
-            width: '100%',
-            height: '100%',
-            zIndex: overlayZIndex,
-            backgroundColor: overlayBackColor
-        }).attr('id', 'xAlert_overlay');
+        if (overlayZIndex) U(overlay).css({ zIndex: overlayZIndex });
+        if (overlayColor && overlayOpacity)U(overlay).css({backgroundColor: overlayBackColor});
+        U(overlay).attr('id', 'xAlert_overlay');
         return overlay;
     }
 
@@ -98,16 +91,7 @@ module.exports = (function () {
         var button = document.createElement('button');
         var textNode = setter.button.text || 'OK';
         var text = document.createTextNode(textNode);
-        U(button).css({
-            display: 'block',
-            minWidth: '50px',
-            minHeight: '30px',
-            marginTop: '5px',
-            marginBottom: '5px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            backgroundColor: 'green',
-        }).attr('id', 'xAlert_OKButton');
+        U(button).attr('id', 'xAlert_OKButton');
 
         if (classe) U(button).attr('class', classe);
         if (cssStyle) U(button).attr('style', cssStyle);
@@ -142,48 +126,25 @@ module.exports = (function () {
 
         var divTesto = document.createElement('div');
         var testoMessaggio = document.createTextNode(setter.text.message.text);
-        U(divTesto).css({
-            display: 'block',
-            padding: '20px',
-            maxHeight: '80%',
-            maxWidth: '100%',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            textAlign: 'center',
-        });
-
+        U(divTesto).attr('id', 'xAlert_text');
         if (MessageCssStyle) U(divTesto).attr('style', MessageCssStyle);
         if (MessageClasse) U(divTesto).attr('class', MessageClasse);
-        divTesto.setAttribute('id', 'xAlert_text');
+       
         divTesto.appendChild(testoMessaggio);
 
         var divTitolo = document.createElement('div');
         var testoTitolo = document.createTextNode(setter.text.title.text);
         U(divTitolo).css({
             display: (setter.text.title.text) ? 'block' : 'none',
-            padding: '20px',
-            maxHeight: '20%',
-            maxWidth: '100%',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            textAlign: 'center',
         });
-
+        U(divTitolo).setAttribute('id', 'xAlert_title');
         if (TitleCssStyle) U(divTitolo).attr('style', TitleCssStyle);
         if (TitleClasse) U(divTitolo).attr('class', TitleClasse);
-        divTitolo.setAttribute('id', 'xAlert_title');
+        
         divTitolo.appendChild(testoTitolo);
 
         var divContenitore = document.createElement('div');
-        U(divContenitore).css({
-            display: 'block',
-            padding: '0px',
-            maxHeight: '90%',
-            maxWidth: '100%',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            textAlign: 'center',
-        }).attr('id', 'xAlert_container');
+        U(divContenitore).attr('id', 'xAlert_container');
 
         divContenitore.appendChild(divTitolo);
         divContenitore.appendChild(divTesto);
@@ -209,22 +170,15 @@ module.exports = (function () {
         var cssStyle = setter.box.cssStyle || null;
 
         var box = document.createElement('div');
-        U(box).css({
-            display: 'none',
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            maxWidth: '35%',
-            maxHeight: '50%',
-            padding: '10px',
-            textAlign: 'center',
-            backgroundColor: 'white',
-            border: '1px solid gray',
-            zIndex: setter.overlay.overZindex + 1 || 100001,
-        });
+        if (setter.overlay.overZindex) {
+            U(box).css({
+                zIndex: setter.overlay.overZindex,
+            });
+        }
+        U(box).attr('id', 'xAlert_box');
         if (classe) U(box).attr('class', classe);
         if (cssStyle) U(box).attr('style', cssStyle);
-        box.setAttribute('id', 'xAlert_box');
+        
         var text = _genText(setter);
         var button = _genButton(setter);
         box.appendChild(text);
