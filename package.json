@@ -1,6 +1,6 @@
 {
   "name": "xalert",
-  "version": "1.1.2",
+  "version": "1.2.4",
   "description": "A better modal Alert",
   "main": "dist/xAlert.js",
   "directories": {},
@@ -30,6 +30,5 @@
     "gulp-uglify": "^2.1.2"
   },
   "dependencies": {
-    "underscore_selector": "^0.3.2"
   }
 }

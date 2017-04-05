@@ -1,4 +1,4 @@
-var U = require('underscore_selector');
+
 module.exports = (function () {
     /**
      * @private
@@ -16,9 +16,10 @@ module.exports = (function () {
         var overlayOpacity = setter.overlay.overOpacity || null;
         var overlayBackColor = "rgba(" + overlayColor + ", " + overlayOpacity + ")";
         var overlay = document.createElement('div');
-        if (overlayZIndex) U(overlay).css({ zIndex: overlayZIndex });
-        if (overlayColor && overlayOpacity)U(overlay).css({backgroundColor: overlayBackColor});
-        U(overlay).attr('id', 'xAlert_overlay');
+        overlay.id = 'xAlert_overlay';
+        if (overlayZIndex) overlay.style.zIndex = overlayZIndex;
+        if (overlayColor && overlayOpacity) overlay.style.backgroundColor = overlayBackColor;
+        
         return overlay;
     }
 
@@ -27,8 +28,10 @@ module.exports = (function () {
      * close xAlert 
      */
     function _close() {
-        U('#xAlert_overlay').css({ display: 'none' });
-        U('#xAlert_box').css({ display: 'none' });
+        var overlay = document.getElementById('xAlert_overlay');
+        var box = document.getElementById('xAlert_box');
+        overlay.style.display ='none';
+        box.style.display =  'none';
     }
 
     /**
@@ -57,15 +60,15 @@ module.exports = (function () {
         if (message != undefined && message != null && message != '') {
             if (typeof message === 'string') {
                 setText('xAlert_text', message);
-                U(title).css({ display: 'none' });
+                title.style.display = 'none';
             } else if (typeof message === 'object') {
                 setText('xAlert_title', message.title);
-                U(title).css({ display: 'block' });
+                title.style.display = 'block';
                 setText('xAlert_text', message.message);
             }
         }
-        U(box).css({ display: 'block' });
-        U(overlay).css({ display: 'block' });
+        box.style.display = 'block';
+        overlay.style.display = 'block';
         return box;
     }
 
@@ -89,12 +92,13 @@ module.exports = (function () {
 
 
         var button = document.createElement('button');
+        button.id = 'xAlert_OKButton';
         var textNode = setter.button.text || 'OK';
         var text = document.createTextNode(textNode);
-        U(button).attr('id', 'xAlert_OKButton');
+        
 
-        if (classe) U(button).attr('class', classe);
-        if (cssStyle) U(button).attr('style', cssStyle);
+        if (classe) button.setAttribute('class', classe);
+        if (cssStyle) button.setAttribute('style', cssStyle);
         button.appendChild(text);
 
         button.addEventListener('click', onClickEvent);
@@ -125,26 +129,26 @@ module.exports = (function () {
         var MessageClasse = setter.text.message.class || null;
 
         var divTesto = document.createElement('div');
+        divTesto.id = 'xAlert_text';
         var testoMessaggio = document.createTextNode(setter.text.message.text);
-        U(divTesto).attr('id', 'xAlert_text');
-        if (MessageCssStyle) U(divTesto).attr('style', MessageCssStyle);
-        if (MessageClasse) U(divTesto).attr('class', MessageClasse);
+        
+        if (MessageCssStyle) divTesto.setAttribute('style', MessageCssStyle);
+        if (MessageClasse) divTesto.setAttribute('class', MessageClasse);
        
         divTesto.appendChild(testoMessaggio);
 
         var divTitolo = document.createElement('div');
+        divTitolo.id = 'xAlert_title';
         var testoTitolo = document.createTextNode(setter.text.title.text);
-        U(divTitolo).css({
-            display: (setter.text.title.text) ? 'block' : 'none',
-        });
-        U(divTitolo).setAttribute('id', 'xAlert_title');
-        if (TitleCssStyle) U(divTitolo).attr('style', TitleCssStyle);
-        if (TitleClasse) U(divTitolo).attr('class', TitleClasse);
+        divTitolo.style.display = (setter.text.title.text) ? 'block' : 'none';
+        
+        if (TitleCssStyle) divTitolo.setAttribute('style', TitleCssStyle);
+        if (TitleClasse) divTitolo.setAttribute('class', TitleClasse);
         
         divTitolo.appendChild(testoTitolo);
 
         var divContenitore = document.createElement('div');
-        U(divContenitore).attr('id', 'xAlert_container');
+        divContenitore.id = 'xAlert_container';
 
         divContenitore.appendChild(divTitolo);
         divContenitore.appendChild(divTesto);
@@ -170,14 +174,13 @@ module.exports = (function () {
         var cssStyle = setter.box.cssStyle || null;
 
         var box = document.createElement('div');
+        box.id = 'xAlert_box';
         if (setter.overlay.overZindex) {
-            U(box).css({
-                zIndex: setter.overlay.overZindex,
-            });
+            box.style.zIndex = setter.overlay.overZindex;
         }
-        U(box).attr('id', 'xAlert_box');
-        if (classe) U(box).attr('class', classe);
-        if (cssStyle) U(box).attr('style', cssStyle);
+        
+        if (classe) box.setAttribute('class', classe);
+        if (cssStyle) box.setAttribute('style', cssStyle);
         
         var text = _genText(setter);
         var button = _genButton(setter);
@@ -245,12 +248,10 @@ module.exports = (function () {
         }
         var top = window.innerHeight / 2 - bH / 2;
         var left = maxDim != '100%' ? window.innerWidth / 2 - ((bW * 75) / 100) / 2 : '0';
-        U(box).css({
-            top: top + 'px',
-            left: left + 'px',
-            width: bW + 'px',
-            maxWidth: maxDim,
-        });
+        box.style.top = top + 'px';
+        box.style.left = left + 'px';
+        box.style.width = bW + 'px';
+        box.style.maxWidth = maxDim;
     }
 
     /**

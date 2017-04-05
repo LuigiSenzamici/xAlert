@@ -1,1 +1,278 @@
-!function e(t,n,r){function l(i,o){if(!n[i]){if(!t[i]){var a="function"==typeof require&&require;if(!o&&a)return a(i,!0);if(s)return s(i,!0);throw new Error("Cannot find module '"+i+"'")}var d=n[i]={exports:{}};t[i][0].call(d.exports,function(e){var n=t[i][1][e];return l(n||e)},d,d.exports,e,t,n,r)}return n[i].exports}for(var s="function"==typeof require&&require,i=0;i<r.length;i++)l(r[i]);return l}({1:[function(e,t,n){t.exports=function(){function e(e){function t(e,t,n){var r=e.getAttribute("class");if(r){r.split(" ").indexOf(s.className)==-1&&(r=r+" "+s.className,e.setAttribute("class",r))}else e.setAttribute("class",s.className)}function n(e,t,n){var r=e.getAttribute("class");if(r){var l=r.split(" ");l.indexOf(s.className)!=-1&&(l.splice(l.indexOf(s.className),1),stringaClassiNew=l.join(" "),stringaClassiNew&&e.setAttribute("class",stringaClassiNew))}}function r(e,t){return Array.isArray(t)?(t.forEach(function(t,n,r){e.setAttribute(t.attr,t.value)}),e):"object"==typeof t?(e.setAttribute(t.attr,t.value),e):e}function l(e){try{return e instanceof HTMLElement}catch(t){return"object"==typeof e&&1===e.nodeType&&"object"==typeof e.style&&"object"==typeof e.ownerDocument}}var s=this;return e&&("string"==typeof e||l(e))?0==e.length?this:("string"==typeof e&&(0==e.search("#")?(e=e.replace("#",""),this.elements=document.getElementById(e)):this.elements=document.querySelectorAll(e)),l(e)&&(this.elements=e),this.addClass=function(e){if(s.className=e,s.elements){if(s.elements.length){for(var n=0;n<s.elements.length;n++)t(s.elements[n],n,s.elements);return s.className=void 0,s}t(s.elements,0,0)}return s.className=void 0,s},this.removeClass=function(e){if(s.className=e,s.elements){if(s.elements.length){for(var t=0;t<s.elements.length;t++)n(s.elements[t],t,s.elements);return s.className=void 0,s}n(s.elements,0,0)}return s.className=void 0,s},this.attr=function(e,t){if(s.elements){if(s.elements.length){for(var n=0;n<s.elements.length;n++)s.elements[n].setAttribute(e,t);return s}s.elements.setAttribute(e,t)}return s},this.removeAttr=function(e){if(s.elements)if(s.elements.length)for(var t=0;t<s.elements.length;t++)s.elements[t].removeAttribute(e);else s.elements.removeAttribute(e);return s},this.on=function(e,t){if(s.elements){if(s.elements.length){for(var n=0;n<s.elements.length;n++)s.elements[n].addEventListener(e,t);return s}s.elements.addEventListener(e,t)}return s},this.create=function(e){if(s.elements){if("text"!=e.tag){var t=document.createElement(e.tag);if(e.attribute&&(t=r(t,e.attribute)),s.elements.length){for(var n=0;n<s.elements.length;n++){var l=t.cloneNode(!1);s.elements[n].appendChild(l)}return s}return s.elements.appendChild(t),s}var t=document.createTextNode(e.value);if(s.elements.length){for(var n=0;n<s.elements.length;n++){var l=t.cloneNode(!1);s.elements[n].appendChild(l)}return s}return s.elements.appendChild(t),s}return s},this.css=function(e){for(prop in e)if(s.elements&&s.elements.length)for(var t=0;t<s.elements.length;t++)s.elements[t].style[prop]=e[prop];return s},this):this}return e}()},{}],2:[function(e,t,n){var r=e("underscore_selector");t.exports=function(){function e(e){void 0===e&&(e={}),void 0===e.overlay&&(e.overlay={});var t=e.overlay.overZIndex||1e5,n=e.overlay.overColor||null,l=e.overlay.overOpacity||null,s="rgba("+n+", "+l+")",i=document.createElement("div");return t&&r(i).css({zIndex:t}),n&&l&&r(i).css({backgroundColor:s}),r(i).attr("id","xAlert_overlay"),i}function t(){r("#xAlert_overlay").css({display:"none"}),r("#xAlert_box").css({display:"none"})}function n(e){function t(e,t){if(null!=t&&void 0!=t&&""!=t&&t.length>0){for(var n=document.getElementById(e);n.hasChildNodes();)n.removeChild(n.firstChild);var r=document.createTextNode(t);n.appendChild(r)}}var n=document.getElementById("xAlert_overlay"),l=document.getElementById("xAlert_box"),s=document.getElementById("xAlert_title");return void 0!=e&&null!=e&&""!=e&&("string"==typeof e?(t("xAlert_text",e),r(s).css({display:"none"})):"object"==typeof e&&(t("xAlert_title",e.title),r(s).css({display:"block"}),t("xAlert_text",e.message))),r(l).css({display:"block"}),r(n).css({display:"block"}),l}function l(e){void 0===e&&(e={}),void 0===e.button&&(e.button={});var n=e.button.onClick||t,l=e.button.class||null,s=e.button.cssStyle||null,i=document.createElement("button"),o=e.button.text||"OK",a=document.createTextNode(o);return r(i).attr("id","xAlert_OKButton"),l&&r(i).attr("class",l),s&&r(i).attr("style",s),i.appendChild(a),i.addEventListener("click",n),i}function s(e){void 0===e&&(e={}),void 0===e.text&&(e.text={}),void 0===e.text.title&&(e.text.title={}),void 0===e.text.message&&(e.text.message={}),e.text.message.text="inserire qui il testo del messaggio attraverso la proprietà message";var t=e.text.title.cssStyle||null,n=e.text.title.class||null,l=e.text.message.cssStyle||null,s=e.text.message.class||null,i=document.createElement("div"),o=document.createTextNode(e.text.message.text);r(i).attr("id","xAlert_text"),l&&r(i).attr("style",l),s&&r(i).attr("class",s),i.appendChild(o);var a=document.createElement("div"),d=document.createTextNode(e.text.title.text);r(a).css({display:e.text.title.text?"block":"none"}),r(a).setAttribute("id","xAlert_title"),t&&r(a).attr("style",t),n&&r(a).attr("class",n),a.appendChild(d);var c=document.createElement("div");return r(c).attr("id","xAlert_container"),c.appendChild(a),c.appendChild(i),c}function i(e){void 0===e&&(e={}),void 0===e.overlay&&(e.overlay={}),void 0===e.box&&(e.box={});var t=e.box.class||null,n=e.box.cssStyle||null,i=document.createElement("div");e.overlay.overZindex&&r(i).css({zIndex:e.overlay.overZindex}),r(i).attr("id","xAlert_box"),t&&r(i).attr("class",t),n&&r(i).attr("style",n);var o=s(e),a=l(e);return i.appendChild(o),i.appendChild(a),i}function o(t){var n=e(t),r=i(t);document.body.appendChild(n),document.body.appendChild(r)}function a(e){var t=n(e),l=window.innerHeight/2,s="35%",i=0;window.innerWidth<=767?(s="100%",i=window.innerWidth):i=window.innerWidth/2;var o=window.innerHeight/2-l/2,a="100%"!=s?window.innerWidth/2-75*i/100/2:"0";r(t).css({top:o+"px",left:a+"px",width:i+"px",maxWidth:s})}function d(){t()}function c(){var e=document.getElementById("xAlert_overlay"),t=document.getElementById("xAlert_box");document.body.removeChild(e),document.body.removeChild(t)}return{init:o,open:a,destroy:c,close:d}}()},{underscore_selector:1}]},{},[2]);
+
+module.exports = (function () {
+    /**
+     * @private
+     * @param {object} setter setter object for gen overlay
+     * @property {integer} setter.overlay.overZIndex overlay zIndex default = 100000
+     * @property {string} setter.overlay.overColor rgb value colon separated default "0, 0, 0";
+     * @property {number} setter.overlay.overOpacity 0 <= value <= 1, default 0.5
+     * @returns {divElement} with display property setted on 'none' and full screen dimension
+     */
+    function _genOverlay(setter) {
+        if (setter === undefined) setter = {};
+        if (setter.overlay === undefined) setter.overlay = {};
+        var overlayZIndex = setter.overlay.overZIndex || 100000;
+        var overlayColor = setter.overlay.overColor || null;
+        var overlayOpacity = setter.overlay.overOpacity || null;
+        var overlayBackColor = "rgba(" + overlayColor + ", " + overlayOpacity + ")";
+        var overlay = document.createElement('div');
+        overlay.id = 'xAlert_overlay';
+        if (overlayZIndex) overlay.style.zIndex = overlayZIndex;
+        if (overlayColor && overlayOpacity) overlay.style.backgroundColor = overlayBackColor;
+        
+        return overlay;
+    }
+
+    /**
+     *@private
+     * close xAlert 
+     */
+    function _close() {
+        var overlay = document.getElementById('xAlert_overlay');
+        var box = document.getElementById('xAlert_box');
+        overlay.style.display ='none';
+        box.style.display =  'none';
+    }
+
+    /**
+     * @private
+     * open xAlert 
+     * @param {string|object} message if setted change the value setted by init(),
+     * @property {string} object.title title of message box
+     * @property {string} object.message message to display
+     * @returns {divElement} box node
+     */
+    function _open(message) {
+        function setText(nodo, testo) {
+            if (testo != null && testo != undefined && testo != '' && testo.length > 0) {
+                var text = document.getElementById(nodo);
+
+                while (text.hasChildNodes()) {
+                    text.removeChild(text.firstChild);
+                }
+                var textNode = document.createTextNode(testo);
+                text.appendChild(textNode);
+            }
+        }
+        var overlay = document.getElementById('xAlert_overlay');
+        var box = document.getElementById('xAlert_box');
+        var title = document.getElementById('xAlert_title');
+        if (message != undefined && message != null && message != '') {
+            if (typeof message === 'string') {
+                setText('xAlert_text', message);
+                title.style.display = 'none';
+            } else if (typeof message === 'object') {
+                setText('xAlert_title', message.title);
+                title.style.display = 'block';
+                setText('xAlert_text', message.message);
+            }
+        }
+        box.style.display = 'block';
+        overlay.style.display = 'block';
+        return box;
+    }
+
+    /**
+     * @private
+     * @param {object} setter.button setter object for button,
+     * @property {string} setter.button.text text to display in button, default = 'OK'
+     * @property {string} setter.button.backColor button background color, default ='green'
+     * @property {string} setter.button.cssStyle inline style inline css format "prop:value;...prop:value;"
+     * @property {string} setter.button.class classes to be assigned to button separated width space
+     * @property {function} setter.button.onClick function to be executed on click function default _close()
+     * @return {buttonElement} a button tag
+     */
+    function _genButton(setter) {
+        if (setter === undefined) setter = {};
+        if (setter.button === undefined) setter.button = {};
+
+        var onClickEvent = setter.button.onClick || _close;
+        var classe = setter.button.class || null;
+        var cssStyle = setter.button.cssStyle || null;
+
+
+        var button = document.createElement('button');
+        button.id = 'xAlert_OKButton';
+        var textNode = setter.button.text || 'OK';
+        var text = document.createTextNode(textNode);
+        
+
+        if (classe) button.setAttribute('class', classe);
+        if (cssStyle) button.setAttribute('style', cssStyle);
+        button.appendChild(text);
+
+        button.addEventListener('click', onClickEvent);
+        return button;
+
+    }
+
+    /**
+     * @private
+     * @param {object} setter.text setter object for text in box
+     * @property {string} setter.text.title.text xAlert title
+     * @property {string} setter.text.title.cssStyle inline style inline css format "prop:value;...prop:value;"
+     * @property {string} setter.text.title.class classes to be assigned to text separated width space
+     * @property {string} setter.text.message.text xAlert message
+     * @property {string} setter.text.message.cssStyle inline style inline css format "prop:value;...prop:value;"
+     * @property {string} setter.text.message.class classes to be assigned to text separated width space
+     * @returns {divElement} contain text to display
+     */
+    function _genText(setter) {
+        if (setter === undefined) setter = {};
+        if (setter.text === undefined) setter.text = {};
+        if (setter.text.title === undefined) setter.text.title = {};
+        if (setter.text.message === undefined) setter.text.message = {};
+        setter.text.message.text = 'inserire qui il testo del messaggio attraverso la proprietà message';
+        var TitleCssStyle = setter.text.title.cssStyle || null;
+        var TitleClasse = setter.text.title.class || null;
+        var MessageCssStyle = setter.text.message.cssStyle || null;
+        var MessageClasse = setter.text.message.class || null;
+
+        var divTesto = document.createElement('div');
+        divTesto.id = 'xAlert_text';
+        var testoMessaggio = document.createTextNode(setter.text.message.text);
+        
+        if (MessageCssStyle) divTesto.setAttribute('style', MessageCssStyle);
+        if (MessageClasse) divTesto.setAttribute('class', MessageClasse);
+       
+        divTesto.appendChild(testoMessaggio);
+
+        var divTitolo = document.createElement('div');
+        divTitolo.id = 'xAlert_title';
+        var testoTitolo = document.createTextNode(setter.text.title.text);
+        divTitolo.style.display = (setter.text.title.text) ? 'block' : 'none';
+        
+        if (TitleCssStyle) divTitolo.setAttribute('style', TitleCssStyle);
+        if (TitleClasse) divTitolo.setAttribute('class', TitleClasse);
+        
+        divTitolo.appendChild(testoTitolo);
+
+        var divContenitore = document.createElement('div');
+        divContenitore.id = 'xAlert_container';
+
+        divContenitore.appendChild(divTitolo);
+        divContenitore.appendChild(divTesto);
+        return divContenitore;
+
+    }
+
+    /**
+     * @private
+     * @param {object} setter setter object
+     * @property {integer} setter.overlay.overZindex automatic passed
+     * @property {string} setter.box.class classes to be assigned to text separated width space
+     * @property {string} setter.box.cssStyle inline style inline css format "prop:value;...prop:value;"
+     * @returns {divElement} box message container
+     */
+    function _genBox(setter) {
+        if (setter === undefined) setter = {};
+        if (setter.overlay === undefined) setter.overlay = {};
+        if (setter.box === undefined) setter.box = {};
+
+
+        var classe = setter.box.class || null;
+        var cssStyle = setter.box.cssStyle || null;
+
+        var box = document.createElement('div');
+        box.id = 'xAlert_box';
+        if (setter.overlay.overZindex) {
+            box.style.zIndex = setter.overlay.overZindex;
+        }
+        
+        if (classe) box.setAttribute('class', classe);
+        if (cssStyle) box.setAttribute('style', cssStyle);
+        
+        var text = _genText(setter);
+        var button = _genButton(setter);
+        box.appendChild(text);
+        box.appendChild(button);
+
+        return box;
+    }
+
+
+
+    /**
+    * @param {object} setter setter object for xAlert
+    *   @property {object} setter.overlay setter for overlay
+    *       @property {integer} setter.overlay.overZIndex overlay zIndex default = 100000
+    *       @property {string} setter.overlay.overColor rgb value colon separated default "0, 0, 0";
+    *       @property {number} setter.overlay.overOpacity 0 <= value <= 1, default 0.5
+    *
+    *   @property {object} setter.box setter for box
+    *       @property {string} setter.box.class  classes to be assigned to text separated width space
+    *       @property {string} setter.box.cssStyle inline style inline css format "prop:value;...prop:value;"
+    *
+    *   @property {object} setter.button setter object for button
+    *       @property {string} setter.button.text text to display in button, default = 'OK'
+    *       @property {string} setter.button.backColor button background color, default ='green'
+    *       @property {string} setter.button.cssStyle inline style inline css format "prop:value;...prop:value;"
+    *       @property {string} setter.button.class classes to be assigned to button separated width space
+    *       @property {function} setter.button.onClick function to be executed on click function default _close()
+    *
+    *   @property {object} setter.text setter object for text in box
+    *       @property {object} setter.text.title title setter
+    *           @property {string} text.title.text xAlert title
+    *           @property {string} text.title.cssStyle inline style inline css format "prop:value;...prop:value;"
+    *           @property {string} text.title.class classes to be assigned to text separated width space
+    *
+    *       @property {object} setter.text.message message
+    *           @property {string} text.message.text xAlert message
+    *           @property {string} text.message.cssStyle inline style inline css format "prop:value;...prop:value;"
+    *           @property {string} text.message.class classes to be assigned to text separated width space
+    *
+    * @returns {divElement} an overlay and a box with message an ok button
+    */
+    function init(setter) {
+        var overlay = _genOverlay(setter);
+        var box = _genBox(setter);
+        document.body.appendChild(overlay);
+        document.body.appendChild(box);
+    }
+    /**
+     * set the message and display centered xAlert
+     * @param {string|object} message message to display in xAlert
+     * @property {string} object.title xAlert title
+     * @property {string} object.message xAlert message
+     */
+    function open(message) {
+        var box = _open(message);
+        var bH = window.innerHeight / 2;
+        var maxDim = '35%';
+        var bW = 0;
+        if (window.innerWidth <= 767) {
+            maxDim = '100%';
+            bW = window.innerWidth;
+        } else {
+            bW = window.innerWidth / 2;
+        }
+        var top = window.innerHeight / 2 - bH / 2;
+        var left = maxDim != '100%' ? window.innerWidth / 2 - ((bW * 75) / 100) / 2 : '0';
+        box.style.top = top + 'px';
+        box.style.left = left + 'px';
+        box.style.width = bW + 'px';
+        box.style.maxWidth = maxDim;
+    }
+
+    /**
+     * close xAlert
+     */
+    function close() {
+        _close();
+    }
+    /**
+     * remove xAlert from the DOM
+     */
+    function destroy() {
+        var overlay = document.getElementById('xAlert_overlay');
+        var box = document.getElementById('xAlert_box');
+        document.body.removeChild(overlay);
+        document.body.removeChild(box);
+    }
+    return {
+        init: init,
+        open: open,
+        destroy: destroy,
+        close: close,
+    }
+})();
