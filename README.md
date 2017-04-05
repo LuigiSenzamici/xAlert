@@ -4,7 +4,8 @@ A better modal Alert
 simply replace javascript alert with a modal
 
 ## Code Example
-
+ 
+ 
 var xAlert = require('xalert');
 xAlert.init();
 xAlert.open('Hello World');
