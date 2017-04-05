@@ -57,6 +57,8 @@ jspm_packages
 
 gulpfile.js
 
+doc/*
+src/*
 MD_API_doc/*
 HTML_doc/*
 
