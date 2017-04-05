@@ -107,7 +107,7 @@ module.exports = (function () {
             marginLeft: 'auto',
             marginRight: 'auto',
             backgroundColor: 'green',
-        });
+        }).attr('id', 'xAlert_OKButton');
 
         if (classe) U(button).attr('class', classe);
         if (cssStyle) U(button).attr('style', cssStyle);
@@ -183,7 +183,7 @@ module.exports = (function () {
             marginLeft: 'auto',
             marginRight: 'auto',
             textAlign: 'center',
-        });
+        }).attr('id', 'xAlert_container');
 
         divContenitore.appendChild(divTitolo);
         divContenitore.appendChild(divTesto);
