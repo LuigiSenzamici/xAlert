@@ -19,7 +19,7 @@ I simply need of an alert that doesn't have an animation when displayed so that 
 npm install xalert --save
 
 ## API
-**[get API doc Here!](https://github.com/UnKitties/xAlert/blob/master/doc/MD_API_doc/API.md)**
+**[get API doc Here!](https://github.com/LuigiSenzamici/xAlert/blob/master/doc/MD_API_doc/API.md)**
 
 ## Tests
 
